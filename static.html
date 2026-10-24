@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Poster Lagai: posters, polaroids and stickers. Pick what you like and order on Telegram.">
+<meta name="theme-color" content="#1c1c1c">
+<title>Poster Lagai</title>
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e3070f;--red-d:#b8050c;--black:#000;--char:#1c1c1c;--line:#333;--grey:#9b9b9b;--paper:#f2f2f2}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+[id]{scroll-margin-top:84px}
+.note{grid-column:1/-1;color:var(--grey)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--char);color:var(--paper);font-family:'Archivo',system-ui,sans-serif;line-height:1.55}
+h1,h2,h3,.display{font-family:'Archivo',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #fff;outline-offset:2px}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:24px;padding:10px 24px;background:var(--char);border-bottom:1px solid var(--line)}
+.brand{display:block;height:52px}
+.brand img{display:block;height:100%;width:auto}
+nav{margin-left:auto;display:flex;gap:26px}
+nav a{color:var(--paper);text-decoration:none;font-weight:500;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--red)}
+.btn{display:inline-block;background:var(--red);color:#fff;border:0;border-radius:2px;padding:10px 20px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .15s}
+.btn:hover{background:var(--red-d)}
+.btn[disabled]{opacity:.5;cursor:wait}
+.btn.alt{background:transparent;color:var(--paper);border:1px solid #555}
+.btn.alt:hover{background:var(--paper);color:#000}
+.small{padding:5px 12px;font-size:.85rem}
+#openCart svg{vertical-align:-3px;margin-right:6px}
+.hero{max-width:1120px;margin:0 auto;padding:96px 24px 88px}
+.hero h1{margin:0 0 22px;max-width:13ch;font-size:clamp(2.8rem,8vw,6rem);letter-spacing:-.035em}
+.hero p{max-width:46ch;margin:0 0 32px;color:#c9c9c9;font-size:1.15rem}
+main{max-width:1120px;margin:0 auto;padding:0 24px 40px}
+.sec{margin:0 0 24px;font-size:clamp(1.7rem,4vw,2.4rem)}
+.filters{display:flex;flex-wrap:wrap;gap:6px 26px;margin:0 0 32px;border-bottom:1px solid var(--line)}
+.filters button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 0;margin-bottom:-1px;cursor:pointer;color:var(--grey);font-weight:600}
+.filters button:hover{color:var(--paper)}
+.filters button[aria-pressed="true"]{color:var(--paper);border-color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:40px 28px}
+.card{display:flex;flex-direction:column;gap:10px}
+.art{aspect-ratio:4/5;background:var(--black);display:grid;place-items:center;overflow:hidden;border:1px solid var(--line)}
+.art img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.card:hover .art img{transform:scale(1.03)}
+.art span{font-size:1.1rem;font-weight:600;color:#666;letter-spacing:0}
+.card h3{margin:4px 0 0;font-size:1.05rem;font-weight:600;letter-spacing:0}
+.card select{background:var(--char);border:1px solid #555;border-radius:2px;padding:7px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.price{font-weight:800;font-size:1.25rem}
+.how{max-width:1120px;margin:0 auto;padding:56px 24px 88px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+.steps li{border-top:2px solid var(--red);padding-top:16px;display:flex;flex-direction:column;gap:8px;color:#c9c9c9}
+.steps b{font-size:2rem;font-weight:800;color:var(--paper);line-height:1}
+footer{display:flex;flex-direction:column;align-items:center;gap:4px;padding:32px 24px;border-top:1px solid var(--line);color:var(--grey);font-size:.9rem}
+footer .display{font-size:1.1rem;color:var(--paper)}
+#cart{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);z-index:10;background:var(--black);border-left:1px solid var(--line);padding:24px;overflow-y:auto;transform:translateX(105%);visibility:hidden;transition:transform .25s,visibility 0s .25s}
+#cart.open{transform:none;visibility:visible;transition-delay:0s}
+#cart h2{font-size:1.8rem;margin:0 0 12px}
+.close{float:right;background:none;border:1px solid #555;border-radius:2px;padding:4px 12px;cursor:pointer}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;background:var(--char);border:1px solid #555;border-radius:2px;cursor:pointer}
+.total{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:700;padding:16px 0}
+label{display:block;margin:12px 0 4px;font-size:.9rem;color:#ccc}
+input,textarea{width:100%;background:var(--char);border:1px solid #555;border-radius:2px;padding:9px}
+#status{min-height:1.5em;margin:12px 0 0}
+.err{color:#ff8a8a}
+.adminBtn{position:fixed;right:10px;bottom:10px;z-index:4;width:34px;height:34px;border-radius:50%;background:var(--char);border:1px solid #444;color:var(--grey);opacity:.25;cursor:pointer;font-size:16px;padding:0}
+.adminBtn:hover,.adminBtn:focus-visible{opacity:1}
+.modal{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.75);display:none;place-items:center;padding:20px}
+.modal.open{display:grid}
+.box{background:var(--black);border:1px solid var(--line);border-radius:2px;padding:24px;width:min(340px,100%)}
+#admin{position:fixed;inset:0;z-index:15;background:var(--char);overflow-y:auto;display:none;padding:24px}
+#admin.open{display:block}
+.abar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.abar h2{margin:0 auto 0 0;font-size:2rem}
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.acard{background:var(--black);border:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:6px}
+.acard label{margin:6px 0 2px}
+.thumb{aspect-ratio:4/3;background:var(--char);display:grid;place-items:center;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb span{font-size:1rem;color:#666}
+.srow{display:grid;grid-template-columns:1fr 80px 36px;gap:6px;margin-bottom:4px}
+@media (max-width:640px){nav{display:none}header{justify-content:space-between}.hero{padding:56px 20px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#cart,.art img,.btn{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#top" aria-label="Poster Lagai home"><img src="data:image/png;base64,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" alt="Poster Lagai"></a>
+  <nav aria-label="Main"><a href="#shop">Shop</a><a href="#how">How to order</a></nav>
+  <button class="btn" id="openCart" aria-controls="cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 4h3l2.5 11h10L21 7H7"/><circle cx="10" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>Cart (<span id="count">0</span>)</button>
+</header>
+
+<section class="hero" id="top">
+  <h1>Posters, polaroids and stickers</h1>
+  <p>Pick what you like, add it to your cart and send it to us on Telegram. We confirm price and delivery in the chat.</p>
+  <a class="btn" href="#shop" style="display:inline-block;text-decoration:none">Browse the shop</a>
+</section>
+<main id="shop">
+  <h2 class="sec">The shop</h2>
+  <div class="filters" id="filters" role="group" aria-label="Filter by type"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="how" id="how">
+  <h2 class="sec">How to order</h2>
+  <ol class="steps">
+    <li><b>1</b><span>Pick your favourites and add them to the cart.</span></li>
+    <li><b>2</b><span>Open the cart and fill in your name, phone number and address.</span></li>
+    <li><b>3</b><span>Press Send order. We get it on Telegram and confirm price and delivery with you.</span></li>
+  </ol>
+</section>
+
+<footer><span class="display">Poster Lagai</span>Posters, polaroids and stickers</footer>
+
+<aside id="cart" aria-label="Your cart">
+  <button class="close" id="closeCart">Close</button>
+  <h2>Your cart</h2>
+  <div id="lines"></div>
+  <div class="total"><span>Total</span><span id="total">0</span></div>
+  <form id="orderForm">
+    <label for="name">Your name</label>
+    <input id="name" required autocomplete="name">
+    <label for="phone">Phone number</label>
+    <input id="phone" type="tel" required autocomplete="tel">
+    <label for="address">Delivery address</label>
+    <textarea id="address" rows="2" required autocomplete="street-address"></textarea>
+    <label for="note">Note (optional)</label>
+    <input id="note">
+    <div id="ts" style="margin-top:14px"></div>
+    <button class="btn" id="sendBtn" type="submit" style="width:100%;margin-top:16px">Send order</button>
+    <p id="status" role="status"></p>
+  </form>
+</aside>
+
+<button class="adminBtn" id="adminBtn" aria-label="Admin login" title="Admin">⚙</button>
+<div class="modal" id="login" role="dialog" aria-modal="true" aria-label="Admin login">
+  <form class="box" id="loginForm">
+    <h2 style="font-size:1.8rem;margin:0 0 8px">Admin</h2>
+    <label for="pw">Password</label>
+    <input id="pw" type="password" autocomplete="off" required>
+    <p id="loginMsg" class="err" role="status"></p>
+    <div class="row"><button type="button" class="btn alt" id="loginCancel">Cancel</button><button class="btn" type="submit">Log in</button></div>
+  </form>
+</div>
+<div id="admin" aria-label="Admin panel">
+  <div class="abar">
+    <h2>Edit shop</h2>
+    <button class="btn" id="addProd">Add product</button>
+    <button class="btn" id="publishBtn">Publish to shop</button>
+    <button class="btn alt" id="exportBtn">Export products.json</button>
+    <label class="btn alt" style="margin:0;cursor:pointer">Import<input type="file" id="importFile" accept=".json" hidden></label>
+    <button class="btn alt" id="resetBtn">Reset</button>
+    <button class="btn alt" id="closeAdmin">Done</button>
+    <button class="btn alt" id="logout">Log out</button>
+  </div>
+  <div class="abar"><span>Rename a category:</span><select id="renFrom" style="background:var(--char);border:2px solid var(--grey);padding:6px"></select><input id="renTo" placeholder="New name" style="max-width:200px"><button class="btn alt small" id="renBtn">Rename</button></div>
+  <p id="aStatus" role="status"></p>
+  <datalist id="catlist"></datalist>
+  <div class="agrid" id="agrid"></div>
+</div>
+
+<script>
+/* ---------- EDIT THIS SECTION ---------- */
+// Paste your Cloudflare Worker URL here (see worker.js). Leave empty to use the Telegram share fallback.
+const ORDER_ENDPOINT = "";
+// Cloudflare Turnstile site key: stops bots from sending fake orders. Leave empty to switch it off.
+const TURNSTILE_SITE_KEY = "";
+const CURRENCY = "৳";
+// Firebase: paste the values from Firebase console > Project settings > Your apps > Web app.
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyDAMah5-vQDVxKkcuu3DZXAlPVvV9J6mHs",
+  authDomain: "posterlagaistatic.firebaseapp.com",
+  projectId: "posterlagaistatic",
+  appId: "1:289230818340:web:88ac7baad62e712d801cb1"
+};
+const ADMIN_EMAIL = "posterlagai@gmail.com"; // the email of the admin user you create in Firebase Authentication
+// img: put a photo file name like "images/naruto.jpg" to replace the red placeholder.
+const DEFAULTS = [
+  {id:"p1", cat:"Posters", name:"Poster – Design 1", img:"", sizes:[{l:"A4",p:150},{l:"A3",p:250}]},
+  {id:"p2", cat:"Posters", name:"Poster – Design 2", img:"", sizes:[{l:"A4",p:150},{l:"A3",p:250}]},
+  {id:"p3", cat:"Posters", name:"Poster – Design 3", img:"", sizes:[{l:"A4",p:150},{l:"A3",p:250}]},
+  {id:"l1", cat:"Polaroids", name:"Polaroid set – Design 1", img:"", sizes:[{l:"Pack of 5",p:120},{l:"Pack of 10",p:220}]},
+  {id:"l2", cat:"Polaroids", name:"Polaroid set – Design 2", img:"", sizes:[{l:"Pack of 5",p:120},{l:"Pack of 10",p:220}]},
+  {id:"s1", cat:"Stickers", name:"Sticker pack – Design 1", img:"", sizes:[{l:"Pack of 10",p:100},{l:"Pack of 20",p:180}]},
+  {id:"s2", cat:"Stickers", name:"Sticker pack – Design 2", img:"", sizes:[{l:"Pack of 10",p:100},{l:"Pack of 20",p:180}]}
+];
+/* --------------------------------------- */
+let PRODUCTS = JSON.parse(JSON.stringify(DEFAULTS));
+let FB = null;
+const ADMIN_HASH = 7016419205560326; // casual lock only
+const cyrb53=(s,seed=0)=>{let a=0xdeadbeef^seed,b=0x41c6ce57^seed;for(let i=0,c;i<s.length;i++){c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677);}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909);return 4294967296*(2097151&b)+(a>>>0);};
+const artHTML=p=>p.img?`<img src="${esc(p.img)}" alt="${esc(p.name)}" decoding="async">`:`<span class="display">${esc(p.cat)}</span>`;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const $ = id => document.getElementById(id);
+const cart = new Map();
+let filter = "All";
+
+function renderFilters(){
+  const cats = ["All", ...new Set(PRODUCTS.map(p => p.cat))];
+  if(!cats.includes(filter)) filter = "All";
+  $("filters").innerHTML = cats.map(c => `<button type="button" aria-pressed="${c===filter}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+}
+function renderGrid(){
+  $("grid").innerHTML = PRODUCTS.filter(p => filter==="All" || p.cat===filter).map(p => `
+    <article class="card">
+      <div class="art" data-pid="${esc(p.id)}">${artHTML(p)}</div>
+      <h3>${esc(p.name)}</h3>
+      <select aria-label="Size for ${esc(p.name)}" data-s="${esc(p.id)}">${p.sizes.map((s,i)=>`<option value="${i}">${esc(s.l)} – ${CURRENCY}${s.p}</option>`).join("")}</select>
+      <div class="row"><span class="price" data-p="${esc(p.id)}">${CURRENCY}${p.sizes[0].p}</span><button class="btn" data-add="${esc(p.id)}">Add to cart</button></div>
+    </article>`).join("");
+}
+function renderCart(){
+  let n = 0, t = 0;
+  $("lines").innerHTML = [...cart.entries()].map(([k,i]) => {
+    n += i.qty; t += i.qty*i.price;
+    return `<div class="line"><div><strong>${esc(i.name)}</strong><br><small>${esc(i.size)} – ${CURRENCY}${i.price}</small></div>
+      <div class="qty"><button type="button" data-d="${esc(k)}" aria-label="Remove one">−</button><span>${i.qty}</span><button type="button" data-u="${esc(k)}" aria-label="Add one">+</button></div></div>`;
+  }).join("") || "<p>Your cart is empty. Add something from the shop.</p>";
+  $("count").textContent = n;
+  $("total").textContent = CURRENCY + t;
+  $("sendBtn").disabled = n === 0;
+}
+function openCart(o){ $("cart").classList.toggle("open", o); if(o) $("closeCart").focus(); }
+
+$("filters").addEventListener("click", e => { const c = e.target.dataset.c; if(c){ filter = c; renderFilters(); renderGrid(); } });
+$("grid").addEventListener("change", e => {
+  const id = e.target.dataset.s; if(!id) return;
+  const p = PRODUCTS.find(x => x.id===id);
+  document.querySelector(`[data-p="${id}"]`).textContent = CURRENCY + p.sizes[e.target.value].p;
+});
+$("grid").addEventListener("click", e => {
+  const id = e.target.dataset.add; if(!id) return;
+  const p = PRODUCTS.find(x => x.id===id);
+  const s = p.sizes[document.querySelector(`[data-s="${id}"]`).value];
+  const k = id + "|" + s.l;
+  const cur = cart.get(k) || {name:p.name, size:s.l, price:s.p, qty:0};
+  cur.qty++; cart.set(k, cur); renderCart();
+  e.target.textContent = "Added ✓"; setTimeout(() => e.target.textContent = "Add to cart", 900);
+});
+$("lines").addEventListener("click", e => {
+  const u = e.target.dataset.u, d = e.target.dataset.d;
+  if(u) cart.get(u).qty++;
+  if(d){ const i = cart.get(d); if(--i.qty <= 0) cart.delete(d); }
+  if(u || d) renderCart();
+});
+$("openCart").onclick = () => openCart(true);
+$("closeCart").onclick = () => { openCart(false); $("openCart").focus(); };
+document.addEventListener("keydown", e => { if(e.key==="Escape") openCart(false); });
+
+function buildMessage(){
+  let total = 0;
+  const items = [...cart.values()].map(i => { total += i.qty*i.price; return `• ${i.qty} × ${i.name} (${i.size}) – ${CURRENCY}${i.qty*i.price}`; }).join("\n");
+  return `🛒 New order – Poster Lagai\n\nName: ${$("name").value.trim()}\nPhone: ${$("phone").value.trim()}\nAddress: ${$("address").value.trim()}\n\n${items}\n\nTotal: ${CURRENCY}${total}` + ($("note").value.trim() ? `\nNote: ${$("note").value.trim()}` : "");
+}
+$("orderForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  if(!cart.size) return;
+  const text = buildMessage(), st = $("status"), btn = $("sendBtn");
+  st.className = ""; st.textContent = "";
+  if(!ORDER_ENDPOINT){
+    window.open("https://t.me/share/url?url=%20&text=" + encodeURIComponent(text), "_blank");
+    st.textContent = "Telegram opened. Choose the Poster Lagai group and press send.";
+    return;
+  }
+  if(TURNSTILE_SITE_KEY && !tsToken){ st.className="err"; st.textContent="Please wait for the security check to finish, then press Send order again."; return; }
+  btn.disabled = true; btn.textContent = "Sending…";
+  try{
+    const r = await fetch(ORDER_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({text,token:tsToken})});
+    if(r.status===429) throw new Error("rate");
+    if(!r.ok) throw new Error();
+    cart.clear(); $("orderForm").reset(); renderCart();
+    st.textContent = "Order sent. We’ll message you shortly to confirm.";
+  }catch(err){
+    st.className = "err";
+    st.textContent = err.message==="rate" ? "Too many orders in a short time. Please try again in a few minutes." : "Couldn’t send the order. Check your connection and try again.";
+  }
+  btn.textContent = "Send order"; btn.disabled = cart.size === 0;
+  if(tsId!==null && window.turnstile){ turnstile.reset(tsId); tsToken=""; }
+});
+
+const KEY="posterLagaiProducts";
+const loadLocal=()=>{try{const s=localStorage.getItem(KEY);return s?JSON.parse(s):null}catch(e){return null}};
+const saveLocal=()=>{try{localStorage.setItem(KEY,JSON.stringify(PRODUCTS));return true}catch(e){return false}};
+function sanitize(list){
+  if(!Array.isArray(list)) return [];
+  const seen=new Set();
+  return list.filter(p=>p&&typeof p==="object").map((p,i)=>{
+    let id=String(p.id||"").replace(/[^\w-]/g,"")||("n"+Date.now()+i);
+    while(seen.has(id)) id+="x"; seen.add(id);
+    const sizes=(Array.isArray(p.sizes)?p.sizes:[]).filter(s=>s&&typeof s==="object").map(s=>({l:String(s.l==null?"":s.l),p:Math.max(0,Number(s.p)||0)}));
+    const img=typeof p.img==="string"?p.img:""; let ph=Number(p.ph)||0; const isNew=!!p._new||(!!img&&!ph); if(img&&!ph) ph=Date.now();
+    return {id,cat:String(p.cat||"Other"),name:String(p.name||"Untitled"),img,ph,_new:isNew,sizes:sizes.length?sizes:[{l:"Standard",p:0}]};
+  });
+}
+const withTimeout=(pr,ms)=>Promise.race([pr,new Promise((_,rej)=>setTimeout(()=>rej(new Error("timeout")),ms))]);
+const configured=!!(FIREBASE_CONFIG.apiKey&&ADMIN_EMAIL);
+let loadError=false;
+const refresh=()=>{
+  renderFilters(); renderGrid(); renderCart();
+  observePhotos();
+  if(!PRODUCTS.length) $("grid").innerHTML='<p class="note">'+(loadError?"Couldn’t load the shop. Check your connection and refresh the page.":configured?"The shop is being set up. Please check back soon.":"No products yet.")+'</p>';
+};
+
+async function loadFirebase(){
+  if(!FIREBASE_CONFIG.apiKey || !ADMIN_EMAIL) return null;
+  const B = "https://www.gstatic.com/firebasejs/10.14.1/";
+  const [{initializeApp}, A, S] = await Promise.all([import(B+"firebase-app.js"), import(B+"firebase-auth.js"), import(B+"firebase-firestore.js")]);
+  const app = initializeApp(FIREBASE_CONFIG), auth = A.getAuth(app), db = S.getFirestore(app);
+  return {
+    async load(){
+      const q = await S.getDocs(S.query(S.collection(db,"products"), S.orderBy("order")));
+      return q.docs.map(d => ({id:d.id, ...d.data()}));
+    },
+    signIn:(email,pw) => A.signInWithEmailAndPassword(auth,email,pw),
+    async getPhoto(id){
+      const d = await S.getDoc(S.doc(db,"photos",id));
+      return d.exists() ? d.data() : null;
+    },
+    async publish(list){
+      const old = await S.getDocs(S.collection(db,"products")), keep = new Set(list.map(p=>p.id)), withPhoto = new Set(list.filter(p=>p.ph).map(p=>p.id)), b = S.writeBatch(db);
+      old.forEach(d => { if(!keep.has(d.id)) b.delete(d.ref); if(!keep.has(d.id) || !withPhoto.has(d.id)) b.delete(S.doc(db,"photos",d.id)); });
+      list.forEach((p,i) => {
+        b.set(S.doc(db,"products",p.id), {cat:p.cat, name:p.name, sizes:p.sizes, order:i, ph:p.ph||0});
+        if(p.ph && p._new && p.img) b.set(S.doc(db,"photos",p.id), {v:p.ph, data:p.img});
+      });
+      await b.commit();
+    }
+  };
+}
+
+/* ---------- Photos: load only what is on screen, remember them in this browser ---------- */
+const idb=()=>new Promise((res,rej)=>{const r=indexedDB.open("posterlagai",1);r.onupgradeneeded=()=>r.result.createObjectStore("photos");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const cacheGet=async id=>{try{const db=await idb();return await new Promise(res=>{const q=db.transaction("photos").objectStore("photos").get(id);q.onsuccess=()=>res(q.result||null);q.onerror=()=>res(null)})}catch(e){return null}};
+const cachePut=async(id,v)=>{try{const db=await idb();db.transaction("photos","readwrite").objectStore("photos").put(v,id)}catch(e){}};
+const photoBusy=new Set();
+async function loadPhoto(p){
+  if(!p||p.img||!p.ph||!FB||photoBusy.has(p.id)) return;
+  photoBusy.add(p.id);
+  try{
+    let c=await cacheGet(p.id);
+    if(!c||c.v!==p.ph){ const d=await FB.getPhoto(p.id); c=d&&d.data?{v:d.v,data:d.data}:null; if(c) cachePut(p.id,c); }
+    if(c){ p.img=c.data; document.querySelectorAll(`[data-pid="${p.id}"]`).forEach(a=>{a.innerHTML=artHTML(p)}); }
+  }catch(e){}
+  photoBusy.delete(p.id);
+}
+let io=null;
+function observePhotos(){
+  if(!FB) return;
+  if(io) io.disconnect();
+  const todo=[...document.querySelectorAll("#grid .art[data-pid]")].map(a=>[a,PRODUCTS.find(x=>x.id===a.dataset.pid)]).filter(([a,p])=>p&&!p.img&&p.ph);
+  if(typeof IntersectionObserver==="undefined"){ todo.forEach(([a,p])=>loadPhoto(p)); return; }
+  io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ io.unobserve(e.target); loadPhoto(PRODUCTS.find(x=>x.id===e.target.dataset.pid)); } }),{rootMargin:"400px"});
+  todo.forEach(([a])=>io.observe(a));
+}
+
+/* ---------- Bot check (Cloudflare Turnstile) ---------- */
+let tsId=null, tsToken="";
+function loadTurnstile(){
+  if(!TURNSTILE_SITE_KEY||!ORDER_ENDPOINT) return;
+  const s=document.createElement("script"); s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"; s.async=true;
+  s.onload=()=>{ tsId=turnstile.render("#ts",{sitekey:TURNSTILE_SITE_KEY,theme:"dark",callback:t=>{tsToken=t},"expired-callback":()=>{tsToken=""},"error-callback":()=>{tsToken=""}}); };
+  document.head.appendChild(s);
+}
+async function init(){
+  loadError=false;
+  if(configured) $("grid").innerHTML='<p class="note">Loading the shop…</p>';
+  try{
+    if(configured){
+      FB=await withTimeout(loadFirebase(),12000);
+      $("publishBtn").hidden=false;
+      PRODUCTS=sanitize(await withTimeout(FB.load(),12000));
+    }else if(location.protocol!=="file:"){
+      try{const r=await fetch("products.json",{cache:"no-store"});if(r.ok){const d=sanitize(await r.json());if(d.length)PRODUCTS=d}}catch(e){}
+    }
+  }catch(e){ loadError=true; console.warn("Shop data unavailable", e); }
+  const l=sanitize(loadLocal()); if(l.length){ PRODUCTS=l; loadError=false; }
+  refresh();
+}
+init();
+loadTurnstile();
+
+/* ---------- Admin ---------- */
+let isAdmin=false, adminPw="";
+const cats=()=>[...new Set(PRODUCTS.map(p=>p.cat))];
+let _pt; const persistSoon=()=>{clearTimeout(_pt);_pt=setTimeout(persist,500)};
+function persist(){
+  const ok=saveLocal(); refresh();
+  $("aStatus").className=ok?"":"err";
+  $("aStatus").textContent=ok?(FB?"Saved on this device. Press Publish to shop to show these changes to customers.":"Saved on this device. Export products.json and upload it to your host to show these changes to customers."):"Couldn’t save: the photos are too large. Remove a photo or use smaller ones.";
+}
+function renderAdmin(){
+  $("renFrom").innerHTML=cats().map(c=>`<option>${esc(c)}</option>`).join("");
+  $("catlist").innerHTML=cats().map(c=>`<option value="${esc(c)}">`).join("");
+  $("agrid").innerHTML=PRODUCTS.map((p,i)=>`
+    <div class="acard" data-i="${i}">
+      <div class="thumb" data-pid="${esc(p.id)}">${artHTML(p)}</div>
+      <div class="row"><label class="btn alt small" style="margin:0;cursor:pointer">Upload photo<input type="file" accept="image/*" hidden data-f="photo"></label>${p.img?`<button class="btn alt small" data-a="nophoto">Remove photo</button>`:""}</div>
+      <label>Name</label><input data-f="name" value="${esc(p.name)}">
+      <label>Category</label><input data-f="cat" list="catlist" value="${esc(p.cat)}">
+      <label>Sizes and prices (${CURRENCY})</label>
+      ${p.sizes.map((s,j)=>`<div class="srow" data-j="${j}"><input data-f="sl" value="${esc(s.l)}" aria-label="Size name"><input data-f="sp" type="number" min="0" value="${s.p}" aria-label="Price"><button class="btn alt small" data-a="delsize" aria-label="Remove size">✕</button></div>`).join("")}
+      <div class="row"><button class="btn alt small" data-a="addsize">Add size</button><button class="btn alt small" data-a="delprod">Delete product</button></div>
+    </div>`).join("");
+  if(!PRODUCTS.length) $("agrid").innerHTML='<p class="note">No products yet. Press Add product, or Reset to start from the sample list.</p>';
+}
+function openAdmin(){ $("admin").classList.add("open"); renderAdmin(); PRODUCTS.forEach(loadPhoto); }
+$("adminBtn").onclick=()=>{ if(isAdmin) return openAdmin(); $("login").classList.add("open"); $("pw").value=""; $("loginMsg").textContent=""; $("pw").focus(); };
+$("loginCancel").onclick=()=>$("login").classList.remove("open");
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") $("login").classList.remove("open"); });
+$("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const pw=$("pw").value; let ok=false, msg="Wrong password. Try again.";
+  $("loginMsg").textContent="Checking…";
+  if(FB){ try{ await FB.signIn(ADMIN_EMAIL,pw); ok=true; }catch(err){ const c=(err&&err.code)||""; if(c.includes("network")) msg="Can’t reach Firebase. Check your connection."; else if(c.includes("too-many")) msg="Too many attempts. Wait a few minutes and try again."; } }
+  else ok = cyrb53(pw)===ADMIN_HASH;
+  if(ok){ isAdmin=true; $("login").classList.remove("open"); openAdmin(); }
+  else $("loginMsg").textContent=msg;
+});
+$("closeAdmin").onclick=()=>$("admin").classList.remove("open");
+$("logout").onclick=()=>{ isAdmin=false; adminPw=""; $("admin").classList.remove("open"); };
+$("agrid").addEventListener("input",e=>{
+  const c=e.target.closest(".acard"), f=e.target.dataset.f; if(!c||!f||f==="photo") return;
+  const p=PRODUCTS[c.dataset.i], j=e.target.closest(".srow")?.dataset.j;
+  if(f==="name") p.name=e.target.value;
+  else if(f==="cat") p.cat=e.target.value.trim()||"Other";
+  else if(f==="sl") p.sizes[j].l=e.target.value;
+  else if(f==="sp") p.sizes[j].p=Math.max(0,Number(e.target.value)||0);
+  persistSoon();
+});
+$("agrid").addEventListener("click",e=>{
+  const a=e.target.dataset.a; if(!a) return;
+  const c=e.target.closest(".acard"), p=PRODUCTS[c.dataset.i];
+  if(a==="nophoto"){ p.img=""; p.ph=0; p._new=false; }
+  else if(a==="addsize") p.sizes.push({l:"New size",p:0});
+  else if(a==="delsize"){ if(p.sizes.length>1) p.sizes.splice(e.target.closest(".srow").dataset.j,1); }
+  else if(a==="delprod"){ if(!confirm("Delete this product?")) return; PRODUCTS.splice(c.dataset.i,1); }
+  persist(); renderAdmin();
+});
+$("agrid").addEventListener("change",e=>{
+  if(e.target.dataset.f!=="photo"||!e.target.files[0]) return;
+  const p=PRODUCTS[e.target.closest(".acard").dataset.i], fr=new FileReader();
+  fr.onload=()=>{const im=new Image();im.onload=()=>{
+    const s=Math.min(1,600/Math.max(im.width,im.height)), cv=document.createElement("canvas");
+    cv.width=Math.round(im.width*s); cv.height=Math.round(im.height*s);
+    const cx=cv.getContext("2d"); cx.fillStyle="#fff"; cx.fillRect(0,0,cv.width,cv.height); cx.drawImage(im,0,0,cv.width,cv.height);
+    p.img=cv.toDataURL("image/jpeg",.75); p.ph=Date.now(); p._new=true; persist(); renderAdmin();
+  }; im.onerror=()=>{$("aStatus").className="err";$("aStatus").textContent="That file isn’t a photo this browser can read. Try a JPG or PNG.";}; im.src=fr.result;};
+  fr.readAsDataURL(e.target.files[0]);
+});
+$("publishBtn").hidden=true;
+$("publishBtn").onclick=async()=>{
+  const st=$("aStatus"), b=$("publishBtn"); st.className=""; st.textContent="Publishing…"; b.disabled=true;
+  try{
+    await FB.publish(PRODUCTS);
+    PRODUCTS.forEach(p=>{p._new=false});
+    try{localStorage.removeItem(KEY)}catch(e){}
+    st.textContent="Published. Customers see the changes now.";
+  }catch(e){
+    st.className="err";
+    st.textContent="Couldn’t publish. Check the Firestore rules, your admin email and your internet connection.";
+  }
+  b.disabled=false;
+};
+$("addProd").onclick=()=>{
+  PRODUCTS.push({id:"n"+Date.now(),cat:cats()[0]||"Posters",name:"New product",img:"",sizes:[{l:"Standard",p:0}]});
+  persist(); renderAdmin(); $("agrid").lastElementChild.scrollIntoView();
+};
+$("renBtn").onclick=()=>{
+  const f=$("renFrom").value, t=$("renTo").value.trim(); if(!f||!t) return;
+  PRODUCTS.forEach(p=>{ if(p.cat===f) p.cat=t; }); $("renTo").value=""; persist(); renderAdmin();
+};
+$("exportBtn").onclick=()=>{
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(PRODUCTS)],{type:"application/json"}));
+  a.download="products.json"; a.click();
+};
+$("importFile").addEventListener("change",e=>{
+  const f=e.target.files[0]; if(!f) return;
+  f.text().then(t=>{ const d=sanitize(JSON.parse(t)); if(!d.length) throw 0; PRODUCTS=d; persist(); renderAdmin(); }).catch(()=>{ $("aStatus").className="err"; $("aStatus").textContent="That file isn’t a valid products.json."; });
+});
+$("resetBtn").onclick=()=>{
+  if(!confirm("Reset all products to the starter list? Your edits on this device will be lost.")) return;
+  PRODUCTS=JSON.parse(JSON.stringify(DEFAULTS)); try{localStorage.removeItem(KEY)}catch(e){} refresh(); renderAdmin();
+};
+</script>
+</body>
+</html>
