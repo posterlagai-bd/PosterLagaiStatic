@@ -57,7 +57,7 @@ main{max-width:1120px;margin:0 auto;padding:0 24px 40px}
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
 .steps li{border-top:2px solid var(--red);padding-top:16px;display:flex;flex-direction:column;gap:8px;color:#c9c9c9}
 .steps b{font-size:2rem;font-weight:800;color:var(--paper);line-height:1}
-footer{display:flex;flex-direction:column;align-items:center;gap:4px;padding:32px 24px;border-top:1px solid var(--line);color:var(--grey);font-size:.9rem}
+footer{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:32px 24px 52px;border-top:1px solid var(--line);color:var(--grey);font-size:.9rem}
 footer .display{font-size:1.1rem;color:var(--paper)}
 #cart{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);z-index:10;background:var(--black);border-left:1px solid var(--line);padding:24px;overflow-y:auto;transform:translateX(105%);visibility:hidden;transition:transform .25s,visibility 0s .25s}
 #cart.open{transform:none;visibility:visible;transition-delay:0s}
@@ -71,7 +71,7 @@ label{display:block;margin:12px 0 4px;font-size:.9rem;color:#ccc}
 input,textarea{width:100%;background:var(--char);border:1px solid #555;border-radius:2px;padding:9px}
 #status{min-height:1.5em;margin:12px 0 0}
 .err{color:#ff8a8a}
-.adminBtn{position:fixed;right:10px;bottom:10px;z-index:4;width:34px;height:34px;border-radius:50%;background:var(--char);border:1px solid #444;color:var(--grey);opacity:.25;cursor:pointer;font-size:16px;padding:0}
+.adminBtn{position:absolute;right:12px;bottom:12px;z-index:4;width:34px;height:34px;border-radius:50%;background:var(--char);border:1px solid #444;color:var(--grey);opacity:.25;cursor:pointer;font-size:16px;padding:0}
 .adminBtn:hover,.adminBtn:focus-visible{opacity:1}
 .modal{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.75);display:none;place-items:center;padding:20px}
 .modal.open{display:grid}
@@ -118,7 +118,9 @@ input,textarea{width:100%;background:var(--char);border:1px solid #555;border-ra
   </ol>
 </section>
 
-<footer><span class="display">Poster Lagai</span>Posters, polaroids and stickers</footer>
+<footer><span class="display">Poster Lagai</span>Posters, polaroids and stickers
+  <button class="adminBtn" id="adminBtn" aria-label="Admin login" title="Admin">⚙</button>
+</footer>
 
 <aside id="cart" aria-label="Your cart">
   <button class="close" id="closeCart">Close</button>
@@ -140,7 +142,6 @@ input,textarea{width:100%;background:var(--char);border:1px solid #555;border-ra
   </form>
 </aside>
 
-<button class="adminBtn" id="adminBtn" aria-label="Admin login" title="Admin">⚙</button>
 <div class="modal" id="login" role="dialog" aria-modal="true" aria-label="Admin login">
   <form class="box" id="loginForm">
     <h2 style="font-size:1.8rem;margin:0 0 8px">Admin</h2>
@@ -170,7 +171,7 @@ input,textarea{width:100%;background:var(--char);border:1px solid #555;border-ra
 <script>
 /* ---------- EDIT THIS SECTION ---------- */
 // Paste your Cloudflare Worker URL here (see worker.js). Leave empty to use the Telegram share fallback.
-const ORDER_ENDPOINT = "";
+const ORDER_ENDPOINT = "https://posterlagai-orders.posterlagai.workers.dev";
 // Cloudflare Turnstile site key: stops bots from sending fake orders. Leave empty to switch it off.
 const TURNSTILE_SITE_KEY = "";
 const CURRENCY = "৳";
@@ -281,7 +282,12 @@ $("orderForm").addEventListener("submit", async e => {
     st.textContent = "Order sent. We’ll message you shortly to confirm.";
   }catch(err){
     st.className = "err";
-    st.textContent = err.message==="rate" ? "Too many orders in a short time. Please try again in a few minutes." : "Couldn’t send the order. Check your connection and try again.";
+    st.textContent = err.message==="rate" ? "Too many orders in a short time. Please try again in a few minutes." : "Couldn’t send the order automatically. Please try again, or send it with Telegram.";
+    if(err.message!=="rate"){
+      const alt=document.createElement("button"); alt.type="button"; alt.className="btn alt small"; alt.style.marginTop="10px"; alt.textContent="Send with Telegram instead";
+      alt.onclick=()=>window.open("https://t.me/share/url?url=%20&text="+encodeURIComponent(text),"_blank");
+      st.appendChild(document.createElement("br")); st.appendChild(alt);
+    }
   }
   btn.textContent = "Send order"; btn.disabled = cart.size === 0;
   if(tsId!==null && window.turnstile){ turnstile.reset(tsId); tsToken=""; }
