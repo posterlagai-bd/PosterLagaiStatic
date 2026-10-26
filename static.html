@@ -71,6 +71,12 @@ label{display:block;margin:12px 0 4px;font-size:.9rem;color:#ccc}
 input,textarea{width:100%;background:var(--char);border:1px solid #555;border-radius:2px;padding:9px}
 #status{min-height:1.5em;margin:12px 0 0}
 .err{color:#ff8a8a}
+.subrow{display:flex;justify-content:space-between;color:#ccc;padding:12px 0 0}
+fieldset.dlv{border:1px solid #555;border-radius:2px;padding:6px 12px 10px;margin:14px 0 0}
+fieldset.dlv legend{padding:0 6px;color:#ccc;font-size:.9rem}
+.opt{display:flex;align-items:center;gap:8px;margin:6px 0;color:var(--paper);font-size:1rem}
+.opt input{width:auto;padding:0;margin:0}
+.opt small{color:var(--grey)}
 .adminBtn{position:absolute;right:12px;bottom:12px;z-index:4;width:34px;height:34px;border-radius:50%;background:var(--char);border:1px solid #444;color:var(--grey);opacity:.25;cursor:pointer;font-size:16px;padding:0}
 .adminBtn:hover,.adminBtn:focus-visible{opacity:1}
 .modal{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.75);display:none;place-items:center;padding:20px}
@@ -126,6 +132,7 @@ input,textarea{width:100%;background:var(--char);border:1px solid #555;border-ra
   <button class="close" id="closeCart">Close</button>
   <h2>Your cart</h2>
   <div id="lines"></div>
+  <div class="subrow"><span>Delivery</span><span id="delv">Choose below</span></div>
   <div class="total"><span>Total</span><span id="total">0</span></div>
   <form id="orderForm">
     <label for="name">Your name</label>
@@ -136,6 +143,7 @@ input,textarea{width:100%;background:var(--char);border:1px solid #555;border-ra
     <textarea id="address" rows="2" required autocomplete="street-address"></textarea>
     <label for="note">Note (optional)</label>
     <input id="note">
+    <fieldset class="dlv"><legend>Delivery area</legend><div id="dlvOpts"></div></fieldset>
     <div id="ts" style="margin-top:14px"></div>
     <button class="btn" id="sendBtn" type="submit" style="width:100%;margin-top:16px">Send order</button>
     <p id="status" role="status"></p>
@@ -175,6 +183,11 @@ const ORDER_ENDPOINT = "https://posterlagai-orders.posterlagai.workers.dev";
 // Cloudflare Turnstile site key: stops bots from sending fake orders. Leave empty to switch it off.
 const TURNSTILE_SITE_KEY = "";
 const CURRENCY = "৳";
+// Delivery choices shown in the cart. fee: a number adds it to the total; null means "charge confirmed in chat".
+const DELIVERY = [
+  { label: "Inside Dhaka", fee: 70 },
+  { label: "Outside Dhaka", fee: null }
+];
 // Firebase: paste the values from Firebase console > Project settings > Your apps > Web app.
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyDAMah5-vQDVxKkcuu3DZXAlPVvV9J6mHs",
@@ -227,7 +240,9 @@ function renderCart(){
       <div class="qty"><button type="button" data-d="${esc(k)}" aria-label="Remove one">−</button><span>${i.qty}</span><button type="button" data-u="${esc(k)}" aria-label="Add one">+</button></div></div>`;
   }).join("") || "<p>Your cart is empty. Add something from the shop.</p>";
   $("count").textContent = n;
-  $("total").textContent = CURRENCY + t;
+  const sel = document.querySelector('input[name="dlv"]:checked'), dl = sel ? DELIVERY[+sel.value] : null;
+  $("delv").textContent = !dl ? "Choose below" : dl.fee == null ? "To be confirmed" : CURRENCY + dl.fee;
+  $("total").textContent = CURRENCY + (t + (dl && dl.fee || 0));
   $("sendBtn").disabled = n === 0;
 }
 function openCart(o){ $("cart").classList.toggle("open", o); if(o) $("closeCart").focus(); }
@@ -243,7 +258,7 @@ $("grid").addEventListener("click", e => {
   const p = PRODUCTS.find(x => x.id===id);
   const s = p.sizes[document.querySelector(`[data-s="${id}"]`).value];
   const k = id + "|" + s.l;
-  const cur = cart.get(k) || {name:p.name, size:s.l, price:s.p, qty:0};
+  const cur = cart.get(k) || {pid:id, name:p.name, size:s.l, price:s.p, qty:0};
   cur.qty++; cart.set(k, cur); renderCart();
   e.target.textContent = "Added ✓"; setTimeout(() => e.target.textContent = "Add to cart", 900);
 });
@@ -257,10 +272,34 @@ $("openCart").onclick = () => openCart(true);
 $("closeCart").onclick = () => { openCart(false); $("openCart").focus(); };
 document.addEventListener("keydown", e => { if(e.key==="Escape") openCart(false); });
 
+function buildOrder(){
+  const sel = document.querySelector('input[name="dlv"]:checked'), d = DELIVERY[+sel.value];
+  return {
+    name: $("name").value.trim(), phone: $("phone").value.trim(), address: $("address").value.trim(), note: $("note").value.trim(),
+    delivery: { label: d.label, fee: d.fee },
+    items: [...cart.values()].map(i => ({ name: i.name, size: i.size, qty: i.qty, price: i.price }))
+  };
+}
+// Plain-text copy of the order, used only if automatic sending is not available
 function buildMessage(){
-  let total = 0;
-  const items = [...cart.values()].map(i => { total += i.qty*i.price; return `• ${i.qty} × ${i.name} (${i.size}) – ${CURRENCY}${i.qty*i.price}`; }).join("\n");
-  return `🛒 New order – Poster Lagai\n\nName: ${$("name").value.trim()}\nPhone: ${$("phone").value.trim()}\nAddress: ${$("address").value.trim()}\n\n${items}\n\nTotal: ${CURRENCY}${total}` + ($("note").value.trim() ? `\nNote: ${$("note").value.trim()}` : "");
+  const o = buildOrder(), L = "──────────────────"; let sub = 0;
+  const lines = o.items.map((i, n) => { const t = i.qty * i.price; sub += t; return `${n+1}. ${i.name} — ${i.size} ×${i.qty} — ${CURRENCY}${t}`; }).join("\n");
+  const fee = o.delivery.fee, dl = `${o.delivery.label} (${fee == null ? "charge to be confirmed" : "+" + CURRENCY + fee})`;
+  const when = new Date().toLocaleString("en-GB", {timeZone:"Asia/Dhaka", day:"2-digit", month:"short", year:"numeric", hour:"2-digit", minute:"2-digit", hour12:false}).replace(",", "");
+  return `🛍️ NEW ORDER\n${L}\n👤 ${o.name}\n📞 ${o.phone}\n📍 ${o.address}\n${L}\n🛒 Items:\n${lines}\n${L}\n🚚 Delivery: ${dl}\n💰 Grand Total: ${CURRENCY}${sub + (fee || 0)}\n🕐 ${when}` + (o.note ? `\n📝 ${o.note}` : "");
+}
+// One photo per ordered product (the picture the customer saw), up to 8
+async function gatherPhotos(){
+  const groups = new Map();
+  for (const i of cart.values()) { const g = groups.get(i.pid) || {name:i.name, sizes:[]}; g.sizes.push(`${i.size} ×${i.qty}`); groups.set(i.pid, g); }
+  const who = $("name").value.trim() + " (" + $("phone").value.trim() + ")", out = [];
+  for (const [pid, g] of groups) {
+    const p = PRODUCTS.find(x => x.id === pid); if (!p) continue;
+    await loadPhoto(p);
+    if (p.img && p.img.startsWith("data:image/")) out.push({ caption: `📎 ${g.name} — ${g.sizes.join(", ")}\nOrder by ${who}`, data: p.img });
+    if (out.length >= 8) break;
+  }
+  return out;
 }
 $("orderForm").addEventListener("submit", async e => {
   e.preventDefault();
@@ -275,7 +314,7 @@ $("orderForm").addEventListener("submit", async e => {
   if(TURNSTILE_SITE_KEY && !tsToken){ st.className="err"; st.textContent="Please wait for the security check to finish, then press Send order again."; return; }
   btn.disabled = true; btn.textContent = "Sending…";
   try{
-    const r = await fetch(ORDER_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({text,token:tsToken})});
+    const r = await fetch(ORDER_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({order:buildOrder(),photos:await gatherPhotos(),token:tsToken,text})});
     if(r.status===429) throw new Error("rate");
     if(!r.ok) throw new Error();
     cart.clear(); $("orderForm").reset(); renderCart();
@@ -497,6 +536,8 @@ $("resetBtn").onclick=()=>{
   if(!confirm("Reset all products to the starter list? Your edits on this device will be lost.")) return;
   PRODUCTS=JSON.parse(JSON.stringify(DEFAULTS)); try{localStorage.removeItem(KEY)}catch(e){} refresh(); renderAdmin();
 };
+$("dlvOpts").innerHTML = DELIVERY.map((d, i) => `<label class="opt"><input type="radio" name="dlv" value="${i}" required> ${esc(d.label)} <small>${d.fee == null ? "(charge confirmed in chat)" : "(+" + CURRENCY + d.fee + ")"}</small></label>`).join("");
+$("dlvOpts").addEventListener("change", renderCart);
 </script>
 </body>
 </html>
